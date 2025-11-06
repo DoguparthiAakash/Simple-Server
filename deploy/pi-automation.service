@@ -1,0 +1,17 @@
+[Unit]
+Description=Pi Automation Starter (Go server)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/pi-automation-starter
+ExecStart=/home/pi/pi-automation-starter/server
+Environment=PORT=8080
+Restart=on-failure
+RestartSec=2
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
